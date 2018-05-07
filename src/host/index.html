@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Your First Panel</title>
+    <script type="text/javascript">
+        /* 1) Create an instance of CSInterface. */
+        var csInterface = new CSInterface();
+
+        /* 2) Make a reference to your HTML button and add a click handler. */
+        var openButton = document.querySelector("#open-button");
+        openButton.addEventListener("click", openDoc);
+
+        /* 3) Write a helper function to pass instructions to the ExtendScript side. */
+        function openDoc() {
+            csInterface.evalScript("openDocument()");
+        }
+
+        function openDocument() {
+            var fileRef = new File("C:/Users/Moose/Pictures/Saved Pictures/Desktop_Background.jpg");
+            var docRef = app.open(fileRef);
+        }
+    </script>
+</head>
+
+<body>
+    <!-- 1) Simple HTML UI elements to get us started -->
+    <h1>Your first panel</h1>
+
+    <!-- 2) A button -->
+    <button id="open-button">Open</button>
+
+    <!-- 3) Add your script dependencies here, including CEP's CSInterface.js library -->
+    <script type="text/javascript" src="CSInterface.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+</body>
+
+</html>
